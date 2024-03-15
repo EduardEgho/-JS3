@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a689c72d-9405-4923-8130-bdb4d72e4d43" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/css/home_works.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/css/home_works.css" afterDir="false" />
+    <list default="true" id="ffbd0330-4e97-4ae6-a0b9-4ae686a67e90" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/js/home_works.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/js/home_works.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/pages/home_works.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/pages/home_works.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/js/lesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/js/lesson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/js/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/js/modal.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,10 +19,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2da8PnETJBHW1bKsbsoB2F4n4a2" />
+  <component name="ProjectId" id="2ddCj9HRf2yArfuJVZanlk2vjMQ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,13 +42,15 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a689c72d-9405-4923-8130-bdb4d72e4d43" name="Changes" comment="" />
-      <created>1710234807081</created>
+      <changelist id="ffbd0330-4e97-4ae6-a0b9-4ae686a67e90" name="Changes" comment="" />
+      <created>1710328700761</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1710234807081</updated>
-      <workItem from="1710234808118" duration="14825000" />
-      <workItem from="1710273167071" duration="4684000" />
+      <updated>1710328700761</updated>
+      <workItem from="1710328701806" duration="3100000" />
+      <workItem from="1710413959875" duration="13444000" />
+      <workItem from="1710505855020" duration="8353000" />
+      <workItem from="1710522750727" duration="954000" />
     </task>
     <servers />
   </component>

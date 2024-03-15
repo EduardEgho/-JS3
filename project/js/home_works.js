@@ -50,7 +50,6 @@ const moveBlock = () =>{
 }
 moveBlock()
 
-//TIME BLOCK
 
 const buttonStart = document.querySelector('#start')
 const buttonStop = document.querySelector('#stop')
@@ -65,14 +64,14 @@ const startStopwatch = () => {
     timeOut = setInterval(() => {
         second++
         seconds.innerHTML = second
-    }, 1000);
+    }, 1000)
 }
 const stopStopwatch = () => {
-    clearInterval(timeOut);
+    clearInterval(timeOut)
 }
 const resetStopwatch = () => {
-    clearInterval(timeOut);
-    second = 0;
+    clearInterval(timeOut)
+    second = 0
     seconds.innerHTML = second
 }
 
