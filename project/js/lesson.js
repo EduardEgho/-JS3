@@ -75,6 +75,62 @@ tabs.forEach(tab => {
 autoTab()
 
 
+//CONVERTER
+
+// принцип DRY - don`t repeat yourself - не повторяй самого себя
+// KISS - keep it simple, stupid - делай проще тупица
+
+const somInput = document.querySelector('#som')
+const usdInput = document.querySelector('#usd')
+const eurInput = document.querySelector('#eur')
+const rubInput = document.querySelector('#rub')
+
+
+const converter = (element, targetElement, nextElement, andElement, current) => {
+    element.oninput = () => {
+        const request = new XMLHttpRequest()
+        request.open('GET', '../data/converter.json')
+        request.setRequestHeader('Content-type', 'application/json')
+        request.send()
+
+        request.onload = () => {
+            const data = JSON.parse(request.response)
+            switch (current) {
+                case 'som':
+                    targetElement.value = (element.value / data.usd).toFixed(2)
+                    nextElement.value = (element.value / data.eur).toFixed(2)
+                    andElement.value = (element.value / data.rubSom).toFixed(2)
+                    break
+                case 'usd':
+                    targetElement.value = (element.value * data.usd).toFixed(2)
+                    nextElement.value = (element.value * data.dollarToEuroExchangeRate).toFixed(2)
+                    andElement.value = (element.value * data.dollarRub).toFixed(2)
+                    break
+                case 'eur':
+                    targetElement.value = (element.value * data.eur).toFixed(2)
+                    nextElement.value = (element.value * data.euroToDollarExchangeRate).toFixed(2)
+                    andElement.value = (element.value * data.euroRub).toFixed(2)
+                    break
+                case 'rub':
+                    targetElement.value = (element.value * data.rubSom).toFixed(2)
+                    nextElement.value = (element.value * data.rubDollar).toFixed(2)
+                    andElement.value = (element.value * data.rubEuro).toFixed(2)
+                    break
+                default:
+                    break
+            }
+
+            element.value === '' && (targetElement.value = '' || (nextElement.value = '') || (andElement.value = ''))
+        }
+    }
+}
+
+converter(somInput, usdInput, eurInput, rubInput, 'som')
+converter(usdInput, somInput, eurInput, rubInput, 'usd')
+converter(eurInput, somInput, usdInput, rubInput, 'eur')
+converter(rubInput, somInput, usdInput, eurInput, 'rub')
+
+
 
 
 

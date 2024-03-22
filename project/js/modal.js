@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 // Функция для определения, находится ли страница в самом низу
 function isPageAtBottom() {
-    return window.innerHeight + window.scrollY >= document.body.offsetHeight;
+    return window.innerHeight + window.scrollY >= document.body.offsetHeight
 }
 
 // Функция для отображения модального окна
