@@ -132,6 +132,67 @@ converter(rubInput, somInput, usdInput, eurInput, 'rub')
 
 
 
+// CARD SWITCHER
+
+const cardBlock = document.querySelector('.card')
+const btnPrev = document.querySelector('#btn-prev')
+const btnNext = document.querySelector('#btn-next')
+
+let count = 1
+
+function flipThrough () {
+    fetch(`https://jsonplaceholder.typicode.com/todos/${count}`)
+        .then(response => response.json())
+        .then(data => {
+            cardBlock.innerHTML = `
+                <p>${data.title}</p>
+                <p style="color: ${data.completed ? 'green' : 'red'}">${data.completed}</p>
+                <span>${data.id}</span>
+            `
+        })
+}
+flipThrough()
+
+btnNext.onclick = () => {
+    count++
+    if (count > 200) {
+        count = 1
+    }
+    flipThrough()
+}
+
+btnPrev.onclick = () =>{
+    count--
+    if (count < 1){
+        count = 200
+    }
+    flipThrough()
+}
+
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
