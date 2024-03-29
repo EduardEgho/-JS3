@@ -85,42 +85,52 @@ const usdInput = document.querySelector('#usd')
 const eurInput = document.querySelector('#eur')
 const rubInput = document.querySelector('#rub')
 
+const urlJson = '../data/converter.json'
 
-const converter = (element, targetElement, nextElement, andElement, current) => {
-    element.oninput = () => {
-        const request = new XMLHttpRequest()
-        request.open('GET', '../data/converter.json')
-        request.setRequestHeader('Content-type', 'application/json')
-        request.send()
 
-        request.onload = () => {
-            const data = JSON.parse(request.response)
-            switch (current) {
-                case 'som':
-                    targetElement.value = (element.value / data.usd).toFixed(2)
-                    nextElement.value = (element.value / data.eur).toFixed(2)
-                    andElement.value = (element.value / data.rubSom).toFixed(2)
-                    break
-                case 'usd':
-                    targetElement.value = (element.value * data.usd).toFixed(2)
-                    nextElement.value = (element.value * data.dollarToEuroExchangeRate).toFixed(2)
-                    andElement.value = (element.value * data.dollarRub).toFixed(2)
-                    break
-                case 'eur':
-                    targetElement.value = (element.value * data.eur).toFixed(2)
-                    nextElement.value = (element.value * data.euroToDollarExchangeRate).toFixed(2)
-                    andElement.value = (element.value * data.euroRub).toFixed(2)
-                    break
-                case 'rub':
-                    targetElement.value = (element.value * data.rubSom).toFixed(2)
-                    nextElement.value = (element.value * data.rubDollar).toFixed(2)
-                    andElement.value = (element.value * data.rubEuro).toFixed(2)
-                    break
-                default:
-                    break
+const converter = async (element, targetElement, nextElement, andElement, current) => {
+    element.oninput = async () => {
+        try {
+            // const response = await fetch(`${urlJson}`)
+            // const data = await response.json()
+            const request = new XMLHttpRequest()
+            request.open('GET', `${urlJson}`)
+            request.setRequestHeader('Content-type', 'application/json')
+            request.send()
+
+
+
+            request.onload = () => {
+                const data = JSON.parse(request.response)
+                switch (current) {
+                    case 'som':
+                        targetElement.value = (element.value / data.usd).toFixed(2)
+                        nextElement.value = (element.value / data.eur).toFixed(2)
+                        andElement.value = (element.value / data.rubSom).toFixed(2)
+                        break
+                    case 'usd':
+                        targetElement.value = (element.value * data.usd).toFixed(2)
+                        nextElement.value = (element.value * data.dollarToEuroExchangeRate).toFixed(2)
+                        andElement.value = (element.value * data.dollarRub).toFixed(2)
+                        break
+                    case 'eur':
+                        targetElement.value = (element.value * data.eur).toFixed(2)
+                        nextElement.value = (element.value * data.euroToDollarExchangeRate).toFixed(2)
+                        andElement.value = (element.value * data.euroRub).toFixed(2)
+                        break
+                    case 'rub':
+                        targetElement.value = (element.value * data.rubSom).toFixed(2)
+                        nextElement.value = (element.value * data.rubDollar).toFixed(2)
+                        andElement.value = (element.value * data.rubEuro).toFixed(2)
+                        break
+                    default:
+                        break
+                }
+
+                element.value === '' && (targetElement.value = '' || (nextElement.value = '') || (andElement.value = ''))
             }
-
-            element.value === '' && (targetElement.value = '' || (nextElement.value = '') || (andElement.value = ''))
+        } catch (error) {
+            console.log(error)
         }
     }
 }
@@ -140,16 +150,20 @@ const btnNext = document.querySelector('#btn-next')
 
 let count = 1
 
-function flipThrough () {
-    fetch(`https://jsonplaceholder.typicode.com/todos/${count}`)
-        .then(response => response.json())
-        .then(data => {
-            cardBlock.innerHTML = `
-                <p>${data.title}</p>
-                <p style="color: ${data.completed ? 'green' : 'red'}">${data.completed}</p>
-                <span>${data.id}</span>
-            `
-        })
+async function flipThrough () {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${count}`)
+        const data = await response.json()
+        cardBlock.innerHTML = `
+       <p>${data.title}</p>
+       <p style="color: ${data.completed ? 'green' : 'red'}">${data.completed}</p>
+       <span>${data.id}</span>
+         `
+    } catch (error) {
+        console.log(error)
+    }
+
+
 }
 flipThrough()
 
@@ -174,8 +188,30 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
     .then(json => console.log(json))
 
 
+// Weather search
 
+const searchInput = document.querySelector('.cityName')
+const city = document.querySelector('.city')
+const temp = document.querySelector('.temp')
 
+const API_KEY = 'e417df62e04d3b1b111abeab19cea714'
+const URL = 'https://api.openweathermap.org/data/2.5/weather'
+
+const citySearch = () => {
+    searchInput.oninput = async (e) => {
+        try {
+            const response = await fetch(`${URL}?q=${e.target.value}&appid=${API_KEY}`)
+            const data = await response.json()
+            city.innerHTML = data.name ? data.name : 'Город не найден...'
+            temp.innerHTML = data.main?.temp ? Math.round(data.main?.temp - 273) + '&deg;C' : '...'      // формула получения из фарингейта на цельсии
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+}
+
+citySearch()
 
 
 

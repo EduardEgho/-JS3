@@ -1,0 +1,54 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    display: inline-table;
+    height: 470px;
+    transition: 600ms 200ms;
+}
+
+.card:hover {
+    cursor: default;
+    transform: scale(1.06);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-top: 10px;
+    color: lavenderblush;
+}
+
+.card p {
+    font-size: 14px;
+    color: red;
+    text-align: center;
+}
+
+.cards_block {
+    background-color: black;
+    padding: 120px 0;
+}
+
+.container_cards {
+    text-align: center;
+
+}
+
+
+
+
+
+
+
+
+
+
+
